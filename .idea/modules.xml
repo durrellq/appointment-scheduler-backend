@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/appointment-scheduler-backend.iml" filepath="$PROJECT_DIR$/.idea/appointment-scheduler-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../appointment-scheduler-web/.idea/appointment-scheduler-web.iml" filepath="$PROJECT_DIR$/../appointment-scheduler-web/.idea/appointment-scheduler-web.iml" />
+    </modules>
+  </component>
+</project>
