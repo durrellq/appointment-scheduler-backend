@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from datetime import date as date_type
 from appointments import (
     get_business, get_services, get_available_slots,
-    create_appointment
+    create_appointment, get_appointments
 )
 
 app = FastAPI()
@@ -25,6 +25,12 @@ class AppointmentCreate(BaseModel):
     client_id: int
     date: str
     start_time: str
+
+    class AppointmentFilter(BaseModel):
+
+        business_id: int | None = None
+    start_date: str | None = None
+    end_date: str | None = None
 
 
 # Routes
@@ -62,5 +68,14 @@ def create_new_appointment(appointment: AppointmentCreate):
     if not result:
         raise HTTPException(status_code=400, detail="Could not create appointment")
     return result
+
+
+@app.get("/appointments")
+def read_appointments(filters: AppointmentCreate = None):
+    return get_appointments(
+        business_id=filters.business_id if filters else None,
+        start_time=filters.start_time if filters else None,
+        end_time=filters.end_time if filters else None
+    )
 
 # Run with: uvicorn main:app --reload

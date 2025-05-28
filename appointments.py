@@ -80,4 +80,19 @@ def create_appointment(service_id, client_id, date, start_time):
     response = supabase.table("appointments").insert(appointment_data).execute()
     return response.data[0] if response.data else None
 
+
+def get_appointments(business_id=None, start_time=None, end_time=None):
+    """Get all appointments with optional filtering"""
+    query = supabase.table("appointments").select("*, services(*), clients(*)").order("start_time")
+
+    if business_id:
+        query = query.eq("services.business_id", business_id)
+    if start_time:
+        query = query.gte("date", start_time)
+    if end_time:
+        query = query.lte("date", end_time)
+
+    response = query.execute()
+    return response.data
+
 # Add more functions as needed

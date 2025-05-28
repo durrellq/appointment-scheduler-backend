@@ -3,4 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11.11 WSL (Ubuntu): (/home/durrell/projects/ulem-grant-tracker-backend/.venv/bin/python)" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="uv (appointment-scheduler-backend)" project-jdk-type="Python SDK" />
 </project>
